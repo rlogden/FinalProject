@@ -16,7 +16,7 @@ public class Employee {
         name = "No name given.";
         hoursWorked = 0.00;
         hourlyRate = 0.00;
-        id = null;
+        id = 1000;
     }
 
     public String getName() {
