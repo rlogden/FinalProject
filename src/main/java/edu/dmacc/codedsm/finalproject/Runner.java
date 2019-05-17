@@ -1,6 +1,5 @@
 package edu.dmacc.codedsm.finalproject;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -33,6 +32,10 @@ public class Runner {
                     updatingEmployee.put(enteredIdInt, employeeToUpdate);
                     updatingEmployee.forEach((key, value) -> System.out.println(key + " : " + value));
                     System.out.println("Please enter the amount of hours you would like to add.");
+                    while (!input.hasNextDouble()) {
+                        System.out.println("Invalid input.\nPlease enter the amount of hours you would like to add.");
+                        input.next();
+                    }
                     double addedHours = input.nextDouble();
                     employeeToUpdate.setHoursWorked(addedHours);
                     employeeController.updateEmployeeHours(enteredIdInt, addedHours);
