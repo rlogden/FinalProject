@@ -1,15 +1,22 @@
 package edu.dmacc.codedsm.finalproject;
 
+import java.util.HashMap;
+
 public class DefaultEmployeeRepository implements EmployeeRepository {
-    DefaultEmployeeController controller = new DefaultEmployeeController();
+    DefaultDataLoaderService service = new DefaultDataLoaderService();
+    HashMap<Integer, Employee> repEmployeeList = service.getEmployeeList();
 
     @Override
     public Employee getEmployeeById(Integer id){
-        return controller.getAllEmployees().get(id);
+        return repEmployeeList.get(id);
     }
 
     @Override
     public void saveEmployee(Employee employee) {
+        repEmployeeList.put((repEmployeeList.size() + 1), employee);
+    }
 
+    public HashMap<Integer, Employee> getRepEmployeeList() {
+        return repEmployeeList;
     }
 }

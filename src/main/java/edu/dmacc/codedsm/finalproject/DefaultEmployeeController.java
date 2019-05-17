@@ -1,22 +1,17 @@
 package edu.dmacc.codedsm.finalproject;
 
-import java.io.IOException;
 import java.util.HashMap;
 
 public class DefaultEmployeeController implements EmployeeController {
-    DefaultDataLoaderService service = new DefaultDataLoaderService();
-
-    HashMap<Integer, Employee> controllerEmployeeList = service.getEmployeeList();
+    DefaultEmployeeService service = new DefaultEmployeeService();
 
     @Override
     public HashMap<Integer, Employee> getAllEmployees() {
-        return controllerEmployeeList;
+        return service.getAllEmployees();
     }
 
     @Override
     public void updateEmployeeHours(Integer id, Double hours) {
-        Employee employeeToUpdate = controllerEmployeeList.get(id);
-        employeeToUpdate.setHoursWorked(hours);
-        controllerEmployeeList.replace(id, employeeToUpdate);
+        service.updateEmployeeHours(id, hours);
     }
 }

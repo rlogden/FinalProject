@@ -1,9 +1,9 @@
 package edu.dmacc.codedsm.finalproject;
 
-import java.util.List;
+import java.util.HashMap;
 
 public interface EmployeeService {
-    public List<Employee> getAllEmployees();
-    public Employee getEmployeeById();
-    public void updateEmployeeHours();
+    HashMap<Integer, Employee> getAllEmployees();
+    Employee getEmployeeById(Integer id);
+    void updateEmployeeHours(Integer id, Double hours);
 }
