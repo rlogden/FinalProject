@@ -18,8 +18,11 @@ public class DefaultEmployeeService implements EmployeeService {
 
     @Override
     public void updateEmployeeHours(Integer id, Double hours) {
-        Employee employeeToUpdate = getAllEmployees().get(id);
+        HashMap<Integer, Employee> updaterMap = getAllEmployees();
+        Employee employeeToUpdate = updaterMap.get(id);
         employeeToUpdate.setHoursWorked(hours);
-        getAllEmployees().replace(id, employeeToUpdate);
+        updaterMap.replace(id, employeeToUpdate);
+        System.out.println(updaterMap);
+        repository.setRepEmployeeList(updaterMap);
     }
 }

@@ -6,11 +6,10 @@ public class FinalProjectRunner {
 
     public static void main(String[] args) {
         GeneralService generalService = new GeneralService();
-        DefaultDataLoaderService dataLoaderService = new DefaultDataLoaderService();
-        DefaultPayrollService payrollService = new DefaultPayrollService();
         DefaultDataLoaderController dataLoaderController = new DefaultDataLoaderController();
         DefaultEmployeeController employeeController = new DefaultEmployeeController();
         DefaultEmployeeView employeeView = new DefaultEmployeeView();
+        DefaultAllEmployeeView allEmployeeView = new DefaultAllEmployeeView();
         Scanner input = new Scanner(System.in);
 
         dataLoaderController.loadData();
@@ -20,7 +19,7 @@ public class FinalProjectRunner {
                     + "\n" + "3 to process payroll and exit" + "\n" + "4 to exit");
             String userInput = input.next();
             if (userInput.equals("1")) {
-                employeeController.getAllEmployees().forEach((key, value) -> System.out.println(key + " : " + value));
+                allEmployeeView.viewAllEmployees();
             } else if (userInput.equals("2")){
                 System.out.println("Please enter the employee's ID to update their hours.");
                 String enteredId = input.next();
@@ -40,7 +39,6 @@ public class FinalProjectRunner {
                     System.out.println("Employee not found.");
                 }
             } else if (userInput.equals("3")) {
-                payrollService.calculatePayroll((dataLoaderService.getEmployeeList()));
                 programRunning = false;
             } else {
                 System.out.println("I'm sorry, that is not a valid input.");
