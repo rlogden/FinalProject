@@ -3,17 +3,29 @@ package edu.dmacc.codedsm.finalproject;
 import java.util.HashMap;
 
 public class DefaultEmployeeController implements EmployeeController {
-    DefaultEmployeeService service = new DefaultEmployeeService();
+
+    private EmployeeService employeeService;
+
+    public DefaultEmployeeController(EmployeeService employeeService) {
+
+        this.employeeService = employeeService;
+    }
 
     @Override
     public HashMap<Integer, Employee> getAllEmployees() {
 
-        return service.getAllEmployees();
+        return employeeService.getAllEmployees();
     }
 
     @Override
     public void updateEmployeeHours(Integer id, Double hours) {
 
-        service.updateEmployeeHours(id, hours);
+        employeeService.updateEmployeeHours(id, hours);
     }
+
+    @Override
+    public Employee getSingleEmployee(Integer id){
+        return employeeService.getEmployeeById(id);
+    }
+
 }

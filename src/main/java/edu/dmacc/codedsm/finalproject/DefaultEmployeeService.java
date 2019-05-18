@@ -4,7 +4,12 @@ import java.util.HashMap;
 
 public class DefaultEmployeeService implements EmployeeService {
 
-    DefaultEmployeeRepository repository = new DefaultEmployeeRepository();
+    EmployeeRepository repository;
+
+    public DefaultEmployeeService(EmployeeRepository repository) {
+
+        this.repository = repository;
+    }
 
     @Override
     public HashMap<Integer, Employee> getAllEmployees() {

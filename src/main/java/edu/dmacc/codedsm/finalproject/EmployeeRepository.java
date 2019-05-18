@@ -4,5 +4,7 @@ import java.util.HashMap;
 
 public interface EmployeeRepository {
     Employee getEmployeeById(Integer id);
-    void saveEmployee (HashMap<Integer, Employee> employeeList);
+    void saveEmployee (Integer id, Employee employee);
+    HashMap<Integer, Employee> getRepEmployeeList();
+    void setRepEmployeeList(HashMap<Integer, Employee> repEmployeeList);
 }

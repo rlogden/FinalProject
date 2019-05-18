@@ -9,7 +9,12 @@ import java.util.HashMap;
 
 public class DefaultDataLoaderService implements DataLoaderService{
 
+    private EmployeeRepository repository;
     private HashMap<Integer, Employee> employeeList = new HashMap<>();
+
+    public DefaultDataLoaderService(EmployeeRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public HashMap<Integer, Employee> readFile() {
@@ -25,7 +30,7 @@ public class DefaultDataLoaderService implements DataLoaderService{
                     String hourlyRate = parts[2];
                     Employee storeEmployee = new Employee(employeeName, Double.parseDouble(hourlyRate));
                     storeEmployee.setId(Integer.parseInt(employeeNumber));
-                    employeeList.put(Integer.parseInt(employeeNumber), storeEmployee);
+                    repository.saveEmployee(Integer.parseInt(employeeNumber), storeEmployee);
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -39,7 +44,7 @@ public class DefaultDataLoaderService implements DataLoaderService{
                         e.printStackTrace();
                     }
                 }
-                return employeeList;
+                return repository.getRepEmployeeList();
             }
         }
 

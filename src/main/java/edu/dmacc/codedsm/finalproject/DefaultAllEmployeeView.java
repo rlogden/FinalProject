@@ -1,10 +1,11 @@
 package edu.dmacc.codedsm.finalproject;
 
+import java.util.HashMap;
+
 public class DefaultAllEmployeeView implements AllEmployeeView{
 
-    DefaultEmployeeController controller = new DefaultEmployeeController();
-
-    public void viewAllEmployees(){
-         controller.getAllEmployees().forEach((key, value) -> System.out.println(key + " : " + value));
+    @Override
+    public void viewAllEmployees(HashMap<Integer, Employee> employeeList){
+         employeeList.forEach((key, value) -> System.out.println(key + " : " + value));
     }
 }

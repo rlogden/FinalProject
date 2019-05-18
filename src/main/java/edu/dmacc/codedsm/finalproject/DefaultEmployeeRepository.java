@@ -3,8 +3,8 @@ package edu.dmacc.codedsm.finalproject;
 import java.util.HashMap;
 
 public class DefaultEmployeeRepository implements EmployeeRepository {
-    HashMap<Integer, Employee> repEmployeeList;
 
+    HashMap<Integer, Employee> repEmployeeList = new HashMap<>();
 
     @Override
     public Employee getEmployeeById(Integer id){
@@ -12,14 +12,17 @@ public class DefaultEmployeeRepository implements EmployeeRepository {
     }
 
     @Override
-    public void saveEmployee(HashMap<Integer, Employee> employeeList){
-        setRepEmployeeList(employeeList);
+    public void saveEmployee(Integer id, Employee employee){
+
+        repEmployeeList.put(id, employee);
     }
 
     public HashMap<Integer, Employee> getRepEmployeeList() {
         return repEmployeeList;
     }
 
+
+    @Override
     public void setRepEmployeeList(HashMap<Integer, Employee> repEmployeeList) {
         this.repEmployeeList = repEmployeeList;
     }

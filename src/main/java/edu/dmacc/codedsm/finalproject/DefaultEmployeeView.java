@@ -4,12 +4,10 @@ import java.util.HashMap;
 
 public class DefaultEmployeeView implements EmployeeView {
 
-    DefaultEmployeeService service = new DefaultEmployeeService();
-
     @Override
-    public void viewSingleEmployee(Integer id) {
+    public void viewSingleEmployee(Integer id, Employee employee) {
         HashMap<Integer,Employee> empToBeViewed = new HashMap<>();
-        empToBeViewed.put(id, service.getEmployeeById(id));
+        empToBeViewed.put(id, employee);
         empToBeViewed.forEach((key, value) -> System.out.println(key + " : " + value));
     }
 }
