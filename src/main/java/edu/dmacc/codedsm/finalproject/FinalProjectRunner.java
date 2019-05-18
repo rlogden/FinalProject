@@ -11,6 +11,8 @@ public class FinalProjectRunner {
         DataLoaderController dataLoaderController = new DefaultDataLoaderController(dataLoaderService);
         EmployeeService employeeService = new DefaultEmployeeService(repository);
         EmployeeController employeeController = new DefaultEmployeeController(employeeService);
+        PayrollService payrollService = new DefaultPayrollService(repository);
+        PayrollController payrollController = new DefaultPayrollController(payrollService);
         EmployeeView employeeView = new DefaultEmployeeView();
         AllEmployeeView allEmployeeView = new DefaultAllEmployeeView();
         Scanner input = new Scanner(System.in);
@@ -42,6 +44,9 @@ public class FinalProjectRunner {
                     System.out.println("Employee not found.");
                 }
             } else if (userInput.equals("3")) {
+                payrollController.processPayroll();
+                programRunning = false;
+            } else if (userInput.equals("4")) {
                 programRunning = false;
             } else {
                 System.out.println("I'm sorry, that is not a valid input.");
