@@ -20,10 +20,4 @@ public class DefaultEmployeeRepository implements EmployeeRepository {
     public HashMap<Integer, Employee> getRepEmployeeList() {
         return repEmployeeList;
     }
-
-
-    @Override
-    public void setRepEmployeeList(HashMap<Integer, Employee> repEmployeeList) {
-        this.repEmployeeList = repEmployeeList;
-    }
 }

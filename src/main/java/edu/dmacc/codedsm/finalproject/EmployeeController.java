@@ -5,5 +5,5 @@ import java.util.HashMap;
 public interface EmployeeController {
     HashMap<Integer, Employee> getAllEmployees();
     void updateEmployeeHours(Integer id, Double hours);
-    public Employee getSingleEmployee(Integer id);
+    Employee getSingleEmployee(Integer id);
 }

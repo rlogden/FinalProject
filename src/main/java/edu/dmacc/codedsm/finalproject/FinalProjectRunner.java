@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class FinalProjectRunner {
 
     public static void main(String[] args) {
-        GeneralService generalService = new GeneralService();
         EmployeeRepository repository = new DefaultEmployeeRepository();
         DataLoaderService dataLoaderService = new DefaultDataLoaderService(repository);
         DataLoaderController dataLoaderController = new DefaultDataLoaderController(dataLoaderService);
@@ -25,10 +24,10 @@ public class FinalProjectRunner {
             String userInput = input.next();
             if (userInput.equals("1")) {
                 allEmployeeView.viewAllEmployees(employeeController.getAllEmployees());
-            } else if (userInput.equals("2")){
+            } else if (userInput.equals("2")) {
                 System.out.println("Please enter the employee's ID to update their hours.");
                 String enteredId = input.next();
-                if (generalService.inputContainsValidId(enteredId)) {
+                if (inputContainsValidId(enteredId)) {
                     int enteredIdInt = Integer.parseInt(enteredId);
                     employeeView.viewSingleEmployee(enteredIdInt, employeeController.getSingleEmployee(enteredIdInt));
                     System.out.println("Please enter the amount of hours you would like to add.");
@@ -52,5 +51,18 @@ public class FinalProjectRunner {
                 System.out.println("I'm sorry, that is not a valid input.");
             }
         }
+    }
+
+    public static boolean inputContainsValidId(String inputStr) {
+        String[] idNums = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+        inputStr.replaceAll("\\s+", "");
+        boolean test = false;
+        for (String element : idNums) {
+            if (element.equals(inputStr)) {
+                test = true;
+                break;
+            }
+        }
+        return test;
     }
 }

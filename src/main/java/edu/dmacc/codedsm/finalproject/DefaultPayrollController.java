@@ -2,7 +2,6 @@ package edu.dmacc.codedsm.finalproject;
 
 public class DefaultPayrollController implements PayrollController {
 
-
     private PayrollService service;
 
     public DefaultPayrollController(PayrollService service) {

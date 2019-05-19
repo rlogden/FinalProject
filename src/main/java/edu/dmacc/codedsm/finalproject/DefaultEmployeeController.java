@@ -24,7 +24,8 @@ public class DefaultEmployeeController implements EmployeeController {
     }
 
     @Override
-    public Employee getSingleEmployee(Integer id){
+    public Employee getSingleEmployee(Integer id) {
+
         return employeeService.getEmployeeById(id);
     }
 
