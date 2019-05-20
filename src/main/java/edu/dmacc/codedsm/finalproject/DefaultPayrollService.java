@@ -31,7 +31,7 @@ public class DefaultPayrollService implements PayrollService {
             for (HashMap.Entry<Integer, PaidEmployee> entry : paidEmployees.entrySet()) {
                 Integer key = entry.getKey();
                 Object value = entry.getValue();
-                out.print("ID: " + key.toString() + " \n" + value.toString() + "\n");
+                out.print("ID: " + key.toString() + "\n" + value.toString() + "\n");
             }
         } catch(IOException e) {
             System.out.println("IOException : " + e);
