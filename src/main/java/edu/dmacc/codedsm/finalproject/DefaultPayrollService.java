@@ -16,8 +16,7 @@ public class DefaultPayrollService implements PayrollService {
     @Override
     public void calculatePayroll() {
         HashMap<Integer, PaidEmployee> paidEmployees = new HashMap<>();
-        FileOutputStream fos = null;
-        ObjectOutputStream oos = null;
+        PrintStream out = null;
         for (Employee employee : repository.getRepEmployeeList().values()) {
             Double amountPaid;
             amountPaid = employee.getHoursWorked() * employee.getHourlyRate() / 1.2;
@@ -27,31 +26,18 @@ public class DefaultPayrollService implements PayrollService {
         }
 
         try {
-            fos = new FileOutputStream("payroll_results.txt");
-            oos = new ObjectOutputStream(fos);
+            out = new PrintStream(new File("payroll_results.txt"));
             for (HashMap.Entry<Integer, PaidEmployee> entry : paidEmployees.entrySet()) {
                 Integer key = entry.getKey();
                 Object value = entry.getValue();
-                oos.writeBytes("ID: " + key.toString() + "\n" + value.toString() + "\n");
+                out.print("ID: " + key.toString() + " \n" + value.toString() + "\n");
             }
-        }catch(IOException e){
+        } catch(IOException e){
             System.out.println("IOException : " + e);
         } finally{
-            if (oos != null) {
-                try {
-                    oos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (fos != null) {
-                try {
-                    fos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            if (out != null) {
+                        out.close();
             }
         }
     }
 }
-
