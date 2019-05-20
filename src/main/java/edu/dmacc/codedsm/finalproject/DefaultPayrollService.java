@@ -17,6 +17,7 @@ public class DefaultPayrollService implements PayrollService {
     public void calculatePayroll() {
         HashMap<Integer, PaidEmployee> paidEmployees = new HashMap<>();
         PrintStream out = null;
+
         for (Employee employee : repository.getRepEmployeeList().values()) {
             Double amountPaid;
             amountPaid = employee.getHoursWorked() * employee.getHourlyRate() / 1.2;
@@ -32,9 +33,9 @@ public class DefaultPayrollService implements PayrollService {
                 Object value = entry.getValue();
                 out.print("ID: " + key.toString() + " \n" + value.toString() + "\n");
             }
-        } catch(IOException e){
+        } catch(IOException e) {
             System.out.println("IOException : " + e);
-        } finally{
+        } finally {
             if (out != null) {
                         out.close();
             }
